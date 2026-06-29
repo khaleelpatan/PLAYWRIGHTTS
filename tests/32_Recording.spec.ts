@@ -1,0 +1,33 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.goto('https://testautomationpractice.blogspot.com/');
+  await page.getByText('For Selenium, Cypress &').click();
+  await page.getByRole('textbox', { name: 'Enter Name' }).click();
+  await page.getByRole('textbox', { name: 'Enter Name' }).click();
+  await page.getByRole('textbox', { name: 'Enter Name' }).fill('Surya');
+  await expect(page.getByRole('textbox', { name: 'Enter Name' })).toHaveValue('Surya');
+  await expect(page.getByRole('button', { name: 'START' })).toBeVisible();
+  await page.getByText('Female').click();
+  await page.getByText('Sunday').click();
+  await page.getByText('Monday').click();
+  await page.getByRole('heading', { name: 'Double Click' }).dblclick();
+  await page.locator('#datepicker').click();
+  await page.getByText('June').click();
+  await page.getByText('June').click();
+  await page.getByRole('link', { name: '10' }).click();
+  await page.locator('#singleFileInput').click();
+  await page.getByRole('button', { name: 'Upload Single File' }).click();
+  await page.getByText('Static Web Table BookName').click();
+  await page.getByRole('cell', { name: 'Learn Selenium' }).click();
+  await page.getByRole('cell').filter({ hasText: /^$/ }).first().click();
+  await page.getByRole('cell', { name: 'Tablet' }).click();
+  await page.locator('tr:nth-child(3) > td:nth-child(4) > input').check();
+  await page.getByRole('cell', { name: 'ShadowDOM Mobiles Laptops' }).locator('input[type="file"]').click();
+  await page.getByText('Footer Links Home Hidden').click();
+  await page.pause();
+  await page.locator('#shadow_host').getByRole('link', { name: 'Blog' }).click();
+  await expect(page.locator('#PageList1')).toContainText('Automation Testing Materials');
+  await expect(page.locator('#PageList1')).toContainText('Agile Methodology');
+  await expect(page.locator('.post')).toBeVisible();
+});
